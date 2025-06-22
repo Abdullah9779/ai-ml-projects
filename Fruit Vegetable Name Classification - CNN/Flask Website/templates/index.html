@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Image classifier | Fruit or Vegetable Detector</title>
+  <link rel="icon" href="https://icons.veryicon.com/png/o/miscellaneous/ai-icon/image-recognition-1.png" type="image/png">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-[#f5f7fa] to-[#c3cfe2] min-h-screen flex flex-col">
+  <!-- Header -->
+  <header class="bg-gradient-to-r from-[#2ecc71] to-[#27ae60] text-white py-6 px-8 shadow-md text-center">
+    <h1 class="text-3xl font-bold">Image classifier</h1>
+    <p class="mt-2 text-lg">AI-Powered Fruit & Vegetable Recognition</p>
+  </header>
+
+  <!-- Main Container -->
+  <div class="max-w-3xl mx-auto my-8 p-8 bg-white/95 rounded-2xl shadow-xl backdrop-blur-sm animate-fadeIn">
+    <!-- Upload Section -->
+    <div class="border-2 border-dashed border-gray-300 rounded-xl py-12 px-8 text-center transition-all duration-300 mb-8 bg-gray-100 hover:border-[#2ecc71] hover:bg-green-50">
+      <form action="/" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" id="fileInput" class="hidden" accept="image/*" required>
+        <label for="fileInput" class="flex flex-col items-center cursor-pointer text-gray-800">
+          <span class="text-4xl mb-4">📤</span>
+          <h3 class="text-2xl font-medium">Upload Food Image</h3>
+          <p class="mt-1">Drag and drop or click to browse</p>
+        </label>
+        <button type="submit" class="mt-6 bg-gradient-to-r from-[#2ecc71] to-[#27ae60] text-white border-none py-3 px-8 rounded-full text-lg cursor-pointer transition-all duration-300 shadow-md hover:-translate-y-1 hover:shadow-lg">
+          Classify Now
+        </button>
+      </form>
+    </div>
+
+    <!-- Image Preview (conditional) -->
+    {% if img_data %}
+      <div class="mb-8">
+        <img src="data:image/jpg;base64,{{ img_data }}" alt="Uploaded Image" class="w-full h-80 object-contain rounded-lg shadow-md transition-transform duration-300 hover:scale-105">
+      </div>
+    {% endif %}
+
+    <!-- Classification Result (conditional) -->
+    {% if result %}
+      <div class="p-6 my-8 rounded-lg bg-gray-100 animate-slideUp">
+        <p class="text-xl font-semibold text-center text-gray-800">
+          Classification Result:
+          <span class="text-[#2ecc71]">{{ result }}</span>
+        </p>
+      </div>
+    {% endif %}
+  </div>
+
+  <!-- Footer -->
+  <footer class="mt-auto bg-gray-800 text-white py-6 text-center">
+    <p>&copy; 2024 Image classifier.</p>
+  </footer>
+
+  <!-- Optional: Custom animations can be added via Tailwind configuration or inline styles -->
+  <style>
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fadeIn {
+      animation: fadeIn 0.6s ease-in;
+    }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-slideUp {
+      animation: slideUp 0.4s ease-out;
+    }
+  </style>
+</body>
+</html>
