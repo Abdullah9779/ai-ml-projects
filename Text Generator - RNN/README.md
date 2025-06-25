@@ -5,7 +5,6 @@ This project is a Recurrent Neural Network (RNN) based text generator implemente
 ## Project Structure
 - `Generate_text.py`: Script to generate text using the trained RNN model.
 - `Text Generator.ipynb`: Jupyter notebook for training and experimenting with the RNN model.
-- `Text Generator.h5`: Saved Keras model weights.
 - `tokenizer.pickle`: Tokenizer object used for text preprocessing.
 - `Data.txt`: Input text data used for training.
 - `y.csv`: Additional data, possibly labels or processed sequences.
